@@ -76,13 +76,15 @@ class AssessmentTestCases(unittest.TestCase):
         with open("order.html", "r") as file_descriptor:
             self.dom_str = file_descriptor.read()
 
-        TRAVIS_DRIVER_LOCATION = '/usr/local/bin/chromedriver'
+        CHROMEDRIVER_PATH = '/usr/local/bin/chromedriver'
+        WINDOW_SIZE = "1920,1080"
 
         options = selenium.webdriver.ChromeOptions()
         options.headless = True
+        options.add_argument("--window-size=%s" % WINDOW_SIZE)
 
         self.driver = webdriver.Chrome(
-            TRAVIS_DRIVER_LOCATION,
+            executable_path=CHROMEDRIVER_PATH,
             options=options
         )
 
