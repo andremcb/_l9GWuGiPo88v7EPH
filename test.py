@@ -71,7 +71,8 @@ class TestAcceptanceStripe(unittest.TestCase):
 
 
 class AssessmentTestCases(unittest.TestCase):
-    def setUp(self) -> None:
+    def setUp(self):
+
         with open("order.html", "r") as file_descriptor:
             self.dom_str = file_descriptor.read()
 
@@ -100,7 +101,7 @@ class AssessmentTestCases(unittest.TestCase):
         return ":".join(res.group().split(": ")[1:]).strip("'")
 
     def test_assessment_successful_payment_on_the_checkout_page_redirects_to_order_html(
-            self
+        self
     ):
         self.driver.get(self._get_url())
         elem = self.driver.find_element_by_id(self._get_button_id())
@@ -121,7 +122,7 @@ class AssessmentTestCases(unittest.TestCase):
         cardcvc_elem.send_keys("424")
         cardname_elem.send_keys("Selenium Test WebDriver")
 
-        confirm_elem = self.driver.find_element_by_class_name("SubmitButton--complete")
+        confirm_elem = self.driver.find_element_by_xpath("//button[@type='submit']")
         confirm_elem.click()
 
         session_id_elem = wait.until(
@@ -131,8 +132,7 @@ class AssessmentTestCases(unittest.TestCase):
         self.assertIn("order_success.html", self.driver.current_url)
         self.assertTrue(session_id_elem.text)
 
-
-    def tearDown(self) -> None:
+    def tearDown(self):
         self.driver.close()
 
 
