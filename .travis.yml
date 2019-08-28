@@ -10,7 +10,7 @@ install:
    - pip install stripe
    - pip install selenium
    - npm install lcov-parse
-   - wget -N http://chromedriver.storage.googleapis.com/73.0.3683.20/chromedriver_linux64.zip -P ~/
+   - wget -N http://chromedriver.storage.googleapis.com/72.0.3626.7/chromedriver_linux64.zip -P ~/
    - unzip ~/chromedriver_linux64.zip -d ~/
    - rm ~/chromedriver_linux64.zip
    - sudo mv -f ~/chromedriver /usr/local/share/
