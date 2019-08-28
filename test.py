@@ -109,7 +109,7 @@ class AssessmentTestCases(unittest.TestCase):
         elem = self.driver.find_element_by_id(self._get_button_id())
         elem.click()
 
-        wait = WebDriverWait(self.driver, 10)
+        wait = WebDriverWait(self.driver, 20)
 
         email_elem = wait.until(EC.presence_of_element_located((By.ID, "email")))
 
