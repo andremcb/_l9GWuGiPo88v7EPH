@@ -7,10 +7,24 @@ install:
    - pip3 install --upgrade pip 
    - pip install coveralls
    - pip install pytest
+   - pip install stripe
+   - pip install selenium
    - npm install lcov-parse
+   - wget -N http://chromedriver.storage.googleapis.com/73.0.3683.20/chromedriver_linux64.zip -P ~/
+   - unzip ~/chromedriver_linux64.zip -d ~/
+   - rm ~/chromedriver_linux64.zip
+   - sudo mv -f ~/chromedriver /usr/local/share/
+   - sudo chmod +x /usr/local/share/chromedriver
+   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
-script: 
- pytest test.py -v --tb=no
+addons: # get google-chrome-stable
+  chrome: stable
+
+script:
+  - whereis google-chrome-stable
+  - whereis chromedriver
+  - python -m http.server 8000
+  - pytest test.py -v --tb=no
 
 after_success:
  - coveralls
