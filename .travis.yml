@@ -22,7 +22,7 @@ addons: # get google-chrome-stable
 
 script:
   - python -m http.server 8000 &
-  - pytest test.py -v --tb=no
+  - pytest test.py -v
 
 after_success:
  - coveralls
