@@ -23,7 +23,7 @@ addons: # get google-chrome-stable
 script:
   - whereis google-chrome-stable
   - whereis chromedriver
-  - python -m http.server 8000
+  - python -m http.server 8000 &
   - pytest test.py -v --tb=no
 
 after_success:

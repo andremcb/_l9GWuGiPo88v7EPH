@@ -75,11 +75,13 @@ class AssessmentTestCases(unittest.TestCase):
         with open("order.html", "r") as file_descriptor:
             self.dom_str = file_descriptor.read()
 
+        TRAVIS_DRIVER_LOCATION = '/usr/local/bin/chromedriver'
+
         options = selenium.webdriver.ChromeOptions()
         options.headless = True
 
         self.driver = webdriver.Chrome(
-            "/Users/andremachado/.wdm/chromedriver/76.0.3809.126/mac64/chromedriver",
+            TRAVIS_DRIVER_LOCATION,
             options=options
         )
 
@@ -98,7 +100,7 @@ class AssessmentTestCases(unittest.TestCase):
         return ":".join(res.group().split(": ")[1:]).strip("'")
 
     def test_assessment_successful_payment_on_the_checkout_page_redirects_to_order_html(
-        self
+            self
     ):
         self.driver.get(self._get_url())
         elem = self.driver.find_element_by_id(self._get_button_id())
@@ -131,7 +133,8 @@ class AssessmentTestCases(unittest.TestCase):
 
     def test_assessment_check_for_most_recent_purchase(self):
         import stripe
-        stripe.api_key = os.environ.get('STRIPE_TEST_SECRET_KEY', 'sk_test_UVddkQuKlEWOyZLDnUSp1PR2')
+        stripe.api_key = os.environ.get('STRIPE_TEST_SECRET_KEY',
+                                        'sk_test_UVddkQuKlEWOyZLDnUSp1PR2')
         charges = stripe.Charge.list(limit=3)
         most_recent = list(charges)[0]
 
