@@ -126,7 +126,7 @@ class AssessmentTestCases(unittest.TestCase):
 
         confirm_elem = self.driver.find_element_by_xpath("//button[@type='submit']")
         confirm_elem.click()
-        #
+        print(self.driver.current_url)
         # import time; time.sleep(10)
         # self.driver.save_screenshot('screenshot.png')
         #
