@@ -16,13 +16,10 @@ install:
    - sudo mv -f ~/chromedriver /usr/local/share/
    - sudo chmod +x /usr/local/share/chromedriver
    - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+   - python http.server 8000 &
 
 addons: # get google-chrome-stable
   chrome: stable
-
-before_install:
-  # start your web application and listen on `localhost`
-  - python http.server 8000 &
 
 script:
   - pytest test.py -v
