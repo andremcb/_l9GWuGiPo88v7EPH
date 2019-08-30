@@ -105,8 +105,8 @@ class AssessmentTestCases(unittest.TestCase):
     def test_assessment_successful_payment_on_the_checkout_page_redirects_to_order_html(
         self
     ):
-        self.driver.get(self._get_url())
-        elem = self.driver.find_element_by_id(self._get_button_id())
+        self.driver.get('http://localhost:8000/order.html')
+        elem = self.driver.find_element_by_id('checkout-button-sku_Fg6RQOAN2Tu58m')
         elem.click()
 
         wait = WebDriverWait(self.driver, 20)
@@ -126,13 +126,10 @@ class AssessmentTestCases(unittest.TestCase):
 
         confirm_elem = self.driver.find_element_by_xpath("//button[@type='submit']")
         confirm_elem.click()
-        print(self.driver.current_url)
-        # import time; time.sleep(10)
-        # self.driver.save_screenshot('screenshot.png')
-        #
-        # session_id_elem = wait.until(
-        #     EC.presence_of_element_located((By.ID, "sessionId"))
-        # )
+
+        session_id_elem = wait.until(
+            EC.presence_of_element_located((By.ID, "sessionId"))
+        )
         self.assertIn("order_success.html", self.driver.current_url)
         self.assertTrue(session_id_elem.text)
 
