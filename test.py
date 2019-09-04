@@ -85,7 +85,6 @@ class AssessmentTestCases(unittest.TestCase):
 
         self.driver = webdriver.Chrome(
             executable_path=CHROMEDRIVER_PATH,
-            options=options
         )
 
     def _get_button_id(self):
@@ -125,7 +124,7 @@ class AssessmentTestCases(unittest.TestCase):
         cardname_elem.send_keys("Selenium Test WebDriver")
 
         print(self.driver.current_url)
-        confirm_elem = wait.until(EC.presence_of_element_located((By.XPATH, "//button[@type='submit']")))
+        confirm_elem = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "SubmitButton--complete")))
         confirm_elem.click()
         print(self.driver.current_url)
         
