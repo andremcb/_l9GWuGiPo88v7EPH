@@ -85,6 +85,7 @@ class AssessmentTestCases(unittest.TestCase):
 
         self.driver = webdriver.Chrome(
             executable_path=CHROMEDRIVER_PATH,
+            options=options
         )
 
     def _get_button_id(self):
