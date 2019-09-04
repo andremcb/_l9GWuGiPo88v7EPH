@@ -127,11 +127,11 @@ class AssessmentTestCases(unittest.TestCase):
         confirm_elem = self.driver.find_element_by_xpath("//button[@type='submit']")
         confirm_elem.click()
 
-        # session_id_elem = wait.until(
-        #     EC.presence_of_element_located((By.ID, "sessionId"))
-        # )
-        # self.assertIn("order_success.html", self.driver.current_url)
-        # self.assertTrue(session_id_elem.text)
+        session_id_elem = wait.until(
+            EC.presence_of_element_located((By.ID, "sessionId"))
+        )
+        self.assertIn("order_success.html", self.driver.current_url)
+        self.assertTrue(session_id_elem.text)
 
         return True
 
