@@ -123,7 +123,8 @@ class AssessmentTestCases(unittest.TestCase):
         cardexp_elem.send_keys("0439")
         cardcvc_elem.send_keys("424")
         cardname_elem.send_keys("Selenium Test WebDriver")
-
+        ss = self.driver.get_screenshot_as_base64()
+        print(ss)
         print(self.driver.current_url)
         confirm_elem = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "SubmitButton--complete")))
         confirm_elem.click()
