@@ -123,7 +123,6 @@ class AssessmentTestCases(unittest.TestCase):
             zip_elem = self.driver.find_element_by_id('billingPostalCode')
         except NoSuchElementException:
             zip_elem = None
-            print('No zip elem')
 
         email_elem.send_keys("assessment@test.com.br")
         cardnum_elem.send_keys("4242424242424242")
@@ -133,10 +132,7 @@ class AssessmentTestCases(unittest.TestCase):
 
         if zip_elem:
             zip_elem.send_keys('12312')
-            print('No zip elem')
 
-        ss = self.driver.get_screenshot_as_base64()
-        print(ss)
         confirm_elem = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "SubmitButton--complete")))
         confirm_elem.click()
 
